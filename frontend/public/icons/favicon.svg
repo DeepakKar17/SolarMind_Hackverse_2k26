@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="favSun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0B0F19" />
+  <circle cx="32" cy="32" r="14" fill="url(#favSun)" />
+  <g stroke="url(#favSun)" stroke-width="2.5" stroke-linecap="round">
+    <line x1="32" y1="8" x2="32" y2="14" />
+    <line x1="32" y1="50" x2="32" y2="56" />
+    <line x1="8" y1="32" x2="14" y2="32" />
+    <line x1="50" y1="32" x2="56" y2="32" />
+  </g>
+  <path d="M26 28 H38 M26 32 H38 M26 36 H38 M29 26 V38 M35 26 V38" stroke="#0B0F19" stroke-width="1.5" stroke-linecap="round" />
+</svg>

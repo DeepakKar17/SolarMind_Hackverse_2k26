@@ -1,0 +1,1 @@
+"""SolarMind Backend Test Suite"""

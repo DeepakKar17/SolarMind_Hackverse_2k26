@@ -1,0 +1,61 @@
+{
+  "name": "SolarMind - AI Solar Monitoring & Fault Diagnosis",
+  "short_name": "SolarMind",
+  "description": "AI-assisted solar monitoring and intelligent fault diagnosis platform for residential on-grid PV systems.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0B0F19",
+  "theme_color": "#F59E0B",
+  "lang": "en",
+  "categories": ["utilities", "productivity", "business"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/favicon.svg",
+      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "type": "image/svg+xml"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Homeowner Dashboard",
+      "short_name": "Homeowner",
+      "description": "View live solar generation and health score",
+      "url": "/home/dashboard",
+      "icons": [{ "src": "/icons/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Technician Queue",
+      "short_name": "Field App",
+      "description": "Access assigned work orders and safety checklists",
+      "url": "/technician/dashboard",
+      "icons": [{ "src": "/icons/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Why-Low Diagnostics",
+      "short_name": "Diagnostics",
+      "description": "Analyze performance drops with AI",
+      "url": "/diagnostics",
+      "icons": [{ "src": "/icons/icon-192.svg", "sizes": "192x192" }]
+    }
+  ]
+}

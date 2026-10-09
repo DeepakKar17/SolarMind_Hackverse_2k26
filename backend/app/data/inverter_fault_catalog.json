@@ -1,0 +1,433 @@
+{
+  "catalog_version": "1.0.0",
+  "description": "SolarMind Manufacturer-Aware Inverter Fault Code Knowledge Base",
+  "last_updated": "2026-10-09T14:30:00Z",
+  "entries": [
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F01",
+      "documented_name": "DC Input Polarity Reverse / DC Input Overvoltage",
+      "documented_description": "PV string polarity is reversed or DC string open-circuit voltage exceeds the maximum permissible inverter input voltage (1100V DC).",
+      "documented_troubleshooting": "1. Turn off the DC rotary switch immediately.\n2. Measure the polarity (+/-) of each PV string connector with a 1000V DC voltmeter.\n3. Ensure positive and negative pins correspond correctly before reconnecting.\n4. Verify that total string Voc does not exceed 1000V DC under minimum expected winter temperature.",
+      "manufacturer_hazard_warning": "DANGER: High DC voltage present. Disconnect DC and AC breakers and wait at least 5 minutes for internal capacitors to discharge before touching DC connectors.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 38",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "Polarity reversal can cause immediate short-circuit damage to MPPT input bridge diodes. SolarMind flags this as an immediate critical intervention before allowing reconnection.",
+        "recommended_sensor_checks": ["dc_voltage_v", "mppt_channels"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F08",
+      "documented_name": "GFCI Over-Current / Leakage Current Protection",
+      "documented_description": "Residual current / ground fault circuit interrupter (GFCI) detected earth leakage current exceeding the 300mA safety threshold.",
+      "documented_troubleshooting": "1. Disconnect DC and AC switches.\n2. Inspect solar array cables and junction boxes for moisture, cuts, or damaged insulation.\n3. Ensure grounding conductor (PE) is securely connected to the inverter chassis and earth pit.\n4. Restart inverter after checking insulation resistance.",
+      "manufacturer_hazard_warning": "DANGER: Electric shock hazard. Leakage current indicates potential contact between energized DC conductors and the mounting frame.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 38",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "Commonly correlates with rainfall, morning dew, or degraded MC4 seals. SolarMind cross-references local weather humidity observations.",
+        "recommended_sensor_checks": ["ambient_temp_c", "poa_irradiance_wm2"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F13",
+      "documented_name": "Grid Phase Sequence Fault / Grid Phase Lost",
+      "documented_description": "The inverter detected a phase loss on one of the three AC grid lines (L1, L2, or L3) or an incorrect phase rotation sequence.",
+      "documented_troubleshooting": "1. Check AC breaker and distribution board for tripped single-phase breakers.\n2. Measure AC line-to-line (L1-L2, L2-L3, L3-L1) voltages with a true-RMS multimeter.\n3. Verify phase rotation is clockwise (L1 -> L2 -> L3).\n4. If utility outage is active, wait for grid supply restoration.",
+      "manufacturer_hazard_warning": "WARNING: Ensure AC supply is de-energized before checking phase terminal screw torque in the AC connection box.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 38",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "GRID_INTERRUPTION",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Identifies utility supply dropouts or blown distribution transformer fuses. Distinguishes grid-side issues from internal inverter defects.",
+        "recommended_sensor_checks": ["ac_voltage_v", "grid_frequency_hz"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F18",
+      "documented_name": "AC Over-Current Hardware Fault",
+      "documented_description": "Instantaneous AC bridge current exceeded hardware safety trip limit. Caused by sudden grid voltage sag, lightning surge, or output short circuit.",
+      "documented_troubleshooting": "1. Restart the inverter by switching off AC and DC, waiting 5 minutes, and switching on.\n2. If fault re-occurs immediately upon grid connection, check AC line impedance and filter inductors.\n3. Contact Deye service if fault cannot be cleared.",
+      "manufacturer_hazard_warning": "DANGER: Do not continuously reset inverter if F18 recurs immediately; power semiconductor failure may worsen.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 38",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "INVERTER_FAULT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "SolarMind blocks automatic retries on F18 to prevent IGBT bridge shoot-through damage.",
+        "recommended_sensor_checks": ["ac_current_a", "ac_voltage_v"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F20",
+      "documented_name": "DC Over-Current Hardware Trip",
+      "documented_description": "DC input current on one of the MPPT trackers exceeded the hardware peak limit.",
+      "documented_troubleshooting": "1. Check the number of parallel PV strings connected to each MPPT input.\n2. Verify string short-circuit current (Isc) under maximum irradiance does not exceed inverter maximum MPPT current rating (40A/MPPT).\n3. Re-organize string connections if MPPT inputs are overloaded.",
+      "manufacturer_hazard_warning": "WARNING: Do not disconnect DC MC4 plugs while inverter is under load (operating with active current).",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 39",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Often occurs during edge-of-cloud irradiance spikes or if parallel bifacial strings exceed nameplate ratings.",
+        "recommended_sensor_checks": ["dc_current_a", "poa_irradiance_wm2"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F22",
+      "documented_name": "Emergency Stop / Remote Shutdown Triggered",
+      "documented_description": "Inverter received external emergency stop command from rapid shutdown controller, emergency button, or remote dry contact input.",
+      "documented_troubleshooting": "1. Verify if physical emergency stop pushbutton on site is depressed.\n2. Check emergency stop dry contact wiring terminals.\n3. Release emergency stop button and restart system.",
+      "manufacturer_hazard_warning": "CAUTION: Ensure site is safe and clear of maintenance personnel before disengaging emergency stop.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 39",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "INVERTER_FAULT",
+        "inferred_severity": "WARNING",
+        "solarmind_diagnostic_notes": "SolarMind verifies whether external fire safety / rapid shutdown systems were activated.",
+        "recommended_sensor_checks": ["inverter_status"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F23",
+      "documented_name": "Transient AC Leakage / Ground Fault Residual Current Exceeded",
+      "documented_description": "Differential residual current sensor detected instantaneous leakage current spike exceeding safety threshold.",
+      "documented_troubleshooting": "1. Check AC cable ground shielding.\n2. Check PV array frame grounding resistance (< 4 ohms).\n3. Restart inverter; if fault occurs only during rain, inspect DC cable conduits.",
+      "manufacturer_hazard_warning": "DANGER: Do not touch array frame if ground fault alarm is illuminated.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 39",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "Distinguishes transient moisture-induced capacitive leakage from permanent ground faults.",
+        "recommended_sensor_checks": ["poa_irradiance_wm2", "ambient_temp_c"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F24",
+      "documented_name": "DC Insulation Impedance Failure (ISO Fault)",
+      "documented_description": "Measured insulation resistance between DC positive/negative conductors and ground is lower than 50k ohms prior to grid synchronization.",
+      "documented_troubleshooting": "1. Turn off DC switch and disconnect all PV strings from inverter.\n2. Test insulation resistance of each string (DC+ to PE, DC- to PE) using a 1000V DC insulation tester.\n3. Locate and replace damaged cables, flooded junction boxes, or pinched module backsheets.\n4. Reconnect strings one by one to isolate the faulty branch.",
+      "manufacturer_hazard_warning": "DANGER: 1000V DC Megger testing must only be performed by certified technicians with PV string disconnected from inverter.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 39",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "Classic DC ground fault. Inverter will not attempt grid synchronization until isolation resistance is restored above 50kΩ.",
+        "recommended_sensor_checks": ["dc_voltage_v", "mppt_channels"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F26",
+      "documented_name": "DC Busbar Voltage Unbalanced",
+      "documented_description": "Voltage difference between positive and negative half-bus capacitors exceeded the internal balance limit.",
+      "documented_troubleshooting": "1. Disconnect DC and AC, wait 5 minutes, and restart inverter.\n2. If fault persists, contact Deye customer service to inspect internal DC bus capacitor balance board.",
+      "manufacturer_hazard_warning": "DANGER: Internal high voltage stored in DC bus capacitors. Do not open inverter chassis without proper discharge verification.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 39",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "INVERTER_FAULT",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Indicates capacitor degradation or power stage asymmetry. Requires service center repair.",
+        "recommended_sensor_checks": ["dc_voltage_v"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F29",
+      "documented_name": "Internal Inverter Heatsink Over-Temperature",
+      "documented_description": "Internal temperature sensor on power module heatsink exceeded 85°C maximum operational limit.",
+      "documented_troubleshooting": "1. Check if ambient temperature exceeds 60°C.\n2. Verify that cooling fans at the bottom/top are spinning normally and not blocked by debris.\n3. Clean dust accumulation from heatsink cooling fins.\n4. Ensure installation meets minimum clearance requirements (500mm left/right, 700mm top/bottom).",
+      "manufacturer_hazard_warning": "CAUTION: Inverter chassis and heatsink surfaces may be hot (>70°C). Allow to cool before servicing fans.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 40",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_TEMPERATURE",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Triggers thermal derating curve before shutdown. SolarMind monitors heatsink temperature gradient against ambient weather data.",
+        "recommended_sensor_checks": ["internal_temp_c", "ambient_temp_c"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F42",
+      "documented_name": "AC Line Low Voltage / AC Voltage Unbalance",
+      "documented_description": "Grid voltage on one or more phases dropped below minimum operating limit (typically 184V line-to-neutral or 320V line-to-line).",
+      "documented_troubleshooting": "1. Measure grid AC voltage with true-RMS meter.\n2. Check AC cable size and voltage drop between inverter and main transformer.\n3. If grid voltage is chronically low, consult utility company for transformer tap adjustment.",
+      "manufacturer_hazard_warning": "WARNING: Work on AC distribution lines must comply with national electrical codes.",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 40",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "GRID_INTERRUPTION",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Distinguishes plant AC cable undersizing (excessive voltage drop under peak output) from utility brownouts.",
+        "recommended_sensor_checks": ["ac_voltage_v", "ac_current_a"]
+      }
+    },
+    {
+      "manufacturer": "Deye",
+      "model_family": "SUN-(70-110)K-G03",
+      "supported_models": [
+        "SUN-70K-G03",
+        "SUN-75K-G03",
+        "SUN-80K-G03",
+        "SUN-90K-G03",
+        "SUN-100K-G03",
+        "SUN-110K-G03"
+      ],
+      "code": "F56",
+      "documented_name": "DC Busbar Voltage Low / Bus Discharge Anomaly",
+      "documented_description": "Internal DC bus voltage failed to charge to operating threshold within expected timeout.",
+      "documented_troubleshooting": "1. Check if DC input voltage from PV array is above starting voltage (250V DC).\n2. Verify that DC switch is completely closed and making firm contact.\n3. If PV voltage is sufficient (>350V) but F56 persists, contact Deye support for internal boost circuit check.",
+      "manufacturer_hazard_warning": "WARNING: Ensure PV array Voc is within operating MPPT range (200V - 1000V DC).",
+      "source_document": "Deye SUN-(70-110)K-G03 Three Phase String Inverter User Manual",
+      "page_reference": "Section 7.2 Fault Troubleshooting, Table 7-1, Page 40",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "WARNING",
+        "solarmind_diagnostic_notes": "Normal during early dawn or sunset when irradiance is insufficient to maintain DC bus. Only abnormal if persisting during peak sunshine.",
+        "recommended_sensor_checks": ["dc_voltage_v", "poa_irradiance_wm2"]
+      }
+    },
+    {
+      "manufacturer": "SMA",
+      "model_family": "Sunny Tripower",
+      "supported_models": ["STP 50-40", "STP 50-41", "STP 15000TL", "STP 25000TL"],
+      "code": "102",
+      "documented_name": "Grid Fault - Frequency Out of Permissible Range",
+      "documented_description": "Utility grid frequency exceeded or dropped below statutory connection window (47.5 Hz - 51.5 Hz).",
+      "documented_troubleshooting": "1. Measure grid frequency at AC connection terminals.\n2. Inverter will automatically reconnect once grid frequency stabilizes within standard operating window for 60 seconds.",
+      "manufacturer_hazard_warning": "WARNING: Grid monitoring is an essential safety function; do not modify grid protection parameters without utility authorization.",
+      "source_document": "SMA Sunny Tripower Installation & Operating Manual",
+      "page_reference": "Section 11 Troubleshooting, Event Code 102",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "GRID_INTERRUPTION",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "External utility grid fluctuation. No inverter hardware replacement required.",
+        "recommended_sensor_checks": ["grid_frequency_hz"]
+      }
+    },
+    {
+      "manufacturer": "SMA",
+      "model_family": "Sunny Tripower",
+      "supported_models": ["STP 50-40", "STP 50-41", "STP 15000TL", "STP 25000TL"],
+      "code": "301",
+      "documented_name": "Grid Overfrequency Fault",
+      "documented_description": "The grid frequency has exceeded the maximum permissible threshold set by local grid code regulations.",
+      "documented_troubleshooting": "1. Check grid frequency with a calibrated power quality analyzer.\n2. Inverter reconnects automatically when frequency returns to normal operating parameters.",
+      "manufacturer_hazard_warning": "WARNING: Do not alter country grid code settings without distribution system operator approval.",
+      "source_document": "SMA Sunny Tripower Installation & Operating Manual",
+      "page_reference": "Section 11 Troubleshooting, Event Code 301",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "GRID_INTERRUPTION",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Overfrequency trip protects utility grid against generation oversupply.",
+        "recommended_sensor_checks": ["grid_frequency_hz"]
+      }
+    },
+    {
+      "manufacturer": "SMA",
+      "model_family": "Sunny Tripower",
+      "supported_models": ["STP 50-40", "STP 50-41", "STP 15000TL", "STP 25000TL"],
+      "code": "3501",
+      "documented_name": "Insulation Resistance - Ground Fault Detected",
+      "documented_description": "The PV array insulation resistance to ground is below 50k ohms. Inverter cannot connect to grid due to ground fault hazard.",
+      "documented_troubleshooting": "1. Disconnect all DC strings from inverter.\n2. Measure insulation resistance of each string (DC+ to ground, DC- to ground) with 1000V DC insulation tester.\n3. Fix damaged PV modules or moisture in junction boxes before reconnecting.",
+      "manufacturer_hazard_warning": "DANGER: Risk of fatal electric shock. Do not touch PV array structure while insulation fault is present.",
+      "source_document": "SMA Sunny Tripower Installation & Operating Manual",
+      "page_reference": "Section 11 Troubleshooting, Event Code 3501",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "Equivalent to Deye F24. Demonstrates distinct code assignment across manufacturers for the same physical electrical ground fault.",
+        "recommended_sensor_checks": ["dc_voltage_v"]
+      }
+    },
+    {
+      "manufacturer": "Fronius",
+      "model_family": "Symo / Primo",
+      "supported_models": ["Symo 10.0-3-M", "Symo 15.0-3-M", "Symo 20.0-3-M", "Primo 5.0-1"],
+      "code": "301",
+      "documented_name": "Overcurrent (AC side)",
+      "documented_description": "Instantaneous or RMS current on AC output exceeded hardware overcurrent threshold.",
+      "documented_troubleshooting": "1. Check AC grid voltages and transformer impedance.\n2. Verify grid lines for short-circuit conditions.",
+      "manufacturer_hazard_warning": "CAUTION: Disconnect AC breaker before checking inverter AC terminal block.",
+      "source_document": "Fronius Symo Operating Instructions",
+      "page_reference": "Section Status Codes, State 301",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Fronius AC overcurrent state. Note that code 301 on Fronius is overcurrent, whereas on SMA it is overfrequency.",
+        "recommended_sensor_checks": ["ac_current_a", "ac_voltage_v"]
+      }
+    },
+    {
+      "manufacturer": "Fronius",
+      "model_family": "Symo / Primo",
+      "supported_models": ["Symo 10.0-3-M", "Symo 15.0-3-M", "Symo 20.0-3-M", "Primo 5.0-1"],
+      "code": "475",
+      "documented_name": "Solar Net Ground Current Fault",
+      "documented_description": "Ground current or residual current detected on Solar Net communication or array ground path.",
+      "documented_troubleshooting": "1. Check Solar Net loop termination plugs.\n2. Inspect DC string cables for insulation damage.\n3. Ensure inverter casing is grounded to system earth.",
+      "manufacturer_hazard_warning": "DANGER: Disconnect AC and DC power before inspecting communication and ground wiring.",
+      "source_document": "Fronius Symo Operating Instructions",
+      "page_reference": "Section Status Codes, State 475",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "ABNORMAL_VOLTAGE_CURRENT",
+        "inferred_severity": "CRITICAL",
+        "solarmind_diagnostic_notes": "Ground loop current anomaly in Fronius inverters.",
+        "recommended_sensor_checks": ["dc_voltage_v"]
+      }
+    },
+    {
+      "manufacturer": "Growatt",
+      "model_family": "MIN / MOD",
+      "supported_models": ["MIN 3000-6000TL-X", "MOD 10-15KTL3-X"],
+      "code": "Error 102",
+      "documented_name": "Sampling Inconsistent - DSP Redundancy Error",
+      "documented_description": "Measurement comparison between Master and Slave DSP microcontrollers showed discrepancy exceeding tolerance.",
+      "documented_troubleshooting": "1. Turn off DC and AC switches, wait 10 minutes, and restart inverter.\n2. If error persists, update inverter firmware or replace control mainboard.",
+      "manufacturer_hazard_warning": "CAUTION: Internal board replacements must be conducted by authorized Growatt service agents.",
+      "source_document": "Growatt MOD Series User Manual",
+      "page_reference": "Section 8 Trouble Shooting, Error 102",
+      "mapping_confidence": 1.0,
+      "solarmind_interpretation": {
+        "category": "INVERTER_FAULT",
+        "inferred_severity": "HIGH",
+        "solarmind_diagnostic_notes": "Microcontroller sensor sampling inconsistency.",
+        "recommended_sensor_checks": ["inverter_status"]
+      }
+    }
+  ]
+}

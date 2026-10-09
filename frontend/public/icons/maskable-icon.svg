@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="mGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0B0F19" />
+    </linearGradient>
+    <linearGradient id="mSun" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <linearGradient id="mSparkle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+  <!-- Full canvas background for maskable safe-zone -->
+  <rect width="512" height="512" fill="url(#mGrad)" />
+  
+  <!-- Safe-zone centered solar emblem -->
+  <circle cx="256" cy="256" r="80" fill="url(#mSun)" />
+  <g stroke="url(#mSun)" stroke-width="10" stroke-linecap="round">
+    <line x1="256" y1="108" x2="256" y2="144" />
+    <line x1="256" y1="368" x2="256" y2="404" />
+    <line x1="108" y1="256" x2="144" y2="256" />
+    <line x1="368" y1="256" x2="404" y2="256" />
+    <line x1="150" y1="150" x2="178" y2="178" />
+    <line x1="334" y1="334" x2="362" y2="362" />
+    <line x1="362" y1="150" x2="334" y2="178" />
+    <line x1="150" y1="362" x2="178" y2="334" />
+  </g>
+  <path d="M216 226 H296 M216 256 H296 M216 286 H296 M236 210 V302 M276 210 V302" stroke="#0B0F19" stroke-width="5" stroke-linecap="round" opacity="0.75" />
+  <polygon points="350,140 358,160 378,168 358,176 350,196 342,176 322,168 342,160" fill="url(#mSparkle)" />
+</svg>
